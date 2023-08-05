@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Error 404 - Page not found</title>
+		<style>
+				html, body {
+						margin:0;
+						height:100%
+						}
+
+				.bg {
+				  /* The image used */
+				  background-image: url("{% static 'assets/img/ERROR 404.png' %}");
+
+				  /* Full height */
+				  height: 100%;
+
+				  /* Center and scale the image nicely */
+				  background-position: center;
+				  background-repeat: no-repeat;
+				  background-size: cover;
+				}
+
+		</style>
+
+	</head>
+	<body>
+		<div class="bg"></div>
+
+	</body>
+</html>
