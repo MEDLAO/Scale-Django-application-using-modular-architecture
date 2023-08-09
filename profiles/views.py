@@ -1,4 +1,5 @@
 """Function-based views for profiles app"""
+import logging
 from django.shortcuts import render
 from profiles.models import Profile
 
@@ -30,6 +31,11 @@ def profile(request, username):
     :return: the render function which takes three arguments request, template and context.
     Then it returns a Http Response with the rendered text.
     """
-    profile = Profile.objects.get(user__username=username)
-    context = {'profile': profile}
-    return render(request, 'profile.html', context)
+
+    try:
+        profile = Profile.objects.get(user__username=username)
+        context = {'profile': profile}
+        return render(request, 'profile.html', context)
+    except ValueError:
+        logging.error("This profile doesn't exist.")
+

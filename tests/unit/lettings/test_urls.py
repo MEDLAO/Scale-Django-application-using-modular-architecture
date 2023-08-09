@@ -11,10 +11,12 @@ def test_lettings_index_url():
     assert resolve(url).func, lettings_index
 
 
-def test_letting_url():
+def test_letting_url(lettings_fixture):
 
     """ Testing if the 'letting' route maps to our 'letting' view """
 
-    url = reverse('lettings:letting', kwargs={'letting_id': 1})
-    assert resolve(url).view_name == 'lettings:letting'
-    assert resolve(url).func, letting
+    path = reverse('lettings:letting', kwargs={'letting_id': 1})
+
+    assert path == "/lettings/1/"
+    assert resolve(path).view_name == 'lettings:letting'
+    assert resolve(path).func, letting

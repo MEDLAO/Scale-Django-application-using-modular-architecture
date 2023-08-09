@@ -1,4 +1,3 @@
-import pytest
 from django.urls import reverse
 from django.test import Client
 from pytest_django.asserts import assertTemplateUsed
@@ -6,7 +5,6 @@ from pytest_django.asserts import assertTemplateUsed
 client = Client()
 
 
-@pytest.mark.django_db
 def test_index():
     response = client.get(reverse('index'))
 
