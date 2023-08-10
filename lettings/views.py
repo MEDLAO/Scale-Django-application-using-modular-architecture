@@ -36,6 +36,7 @@ def letting(request, letting_id):
     :param letting_id: the id of the letting we want to consult
     :return: the render function which takes three arguments request, template and context.
     Then it returns a Http Response with the rendered text.
+
     """
     letting = Letting.objects.get(id=letting_id)
     context = {
@@ -43,3 +44,4 @@ def letting(request, letting_id):
         'address': letting.address,
     }
     return render(request, 'letting.html', context)
+
