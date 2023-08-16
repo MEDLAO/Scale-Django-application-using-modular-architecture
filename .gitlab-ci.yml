@@ -29,6 +29,5 @@ build_job:
     - export CI_PROJECT_NAMESPACE=$(echo "$CI_PROJECT_NAMESPACE" | tr '[:upper:]' '[:lower:]')
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker tag
     - docker build --pull --no-cache --rm=true . --tag=$CONTAINER_IMAGE
     - docker push $CONTAINER_IMAGE
