@@ -183,7 +183,7 @@ LOGGING = {
         # },
         'raven': {
             'level': 'WARNING',
-            'handlers': ['console',],
+            'handlers': ['console', ],
             'propagate': False,
         },
         'sentry.errors': {

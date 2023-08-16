@@ -37,5 +37,3 @@ def test_from_index_to_profiles(lettings_fixture, profiles_fixture):
     # And check if I can consult the profiles list :
     assert response_profiles.status_code == 200
     assert assertTemplateUsed(response_profiles, 'profiles_index.html')
-
-

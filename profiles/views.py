@@ -38,4 +38,3 @@ def profile(request, username):
         return render(request, 'profile.html', context)
     except ValueError:
         logging.error("This profile doesn't exist.")
-

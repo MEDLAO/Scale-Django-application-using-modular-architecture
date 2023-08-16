@@ -1,11 +1,13 @@
 stages:
   - quality
   - test
+  - build
+# deploy
   
 code_quality_job :
-    stage : quality
+    stage: quality
     allow_failure: true
-    script :
+    script:
         - flake8 .
         
 test_job:
@@ -14,3 +16,14 @@ test_job:
   script:
     - pip install -r requirements.txt
     - pytest tests/unit/
+
+build_job:
+  stage: build
+  image: project-13-sml
+  script:
+    - docker build -t project-13-sml .
+    - docker tag project-13-sml:latest medlao/project-13-sml:latest
+    - echo ${HUB_DOCKER_TOKEN} |
+      docker login -u ${HUB_DOCKER_USERNAME} --password-stdin
+    - docker push medlao/project-13-sml:latest
+    - docker logout
