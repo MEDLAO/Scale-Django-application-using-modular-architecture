@@ -19,9 +19,9 @@ test_job:
 
 build_job:
   stage: build
-  image: docker:latest
+  image: docker:24.0.4
   services:
-    - docker:dind
+    - docker:24.0.4-dind
   script:
     - docker build -t project-13-sml .
     - echo ${HUB_DOCKER_TOKEN} |
