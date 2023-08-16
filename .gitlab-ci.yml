@@ -4,9 +4,6 @@ stages:
   - build
 # deploy
 
-variables:
-  CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
-
 code_quality_job :
     stage: quality
     allow_failure: true
@@ -28,5 +25,5 @@ build_job:
   script:
     - echo CI_PROJECT_NAMESPACE="$CI_PROJECT_NAMESPACE" | tr '[:upper:]' '[:lower:]'
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build --pull --no-cache --rm=true . --tag=$CONTAINER_IMAGE
+    - docker build --pull --no-cache --rm=true . --tag=$CI_COMMIT_SHORT_SHA
     - docker push $CONTAINER_IMAGE
