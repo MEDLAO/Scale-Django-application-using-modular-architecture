@@ -3,7 +3,10 @@ stages:
   - test
   - build
 # deploy
-  
+
+variables:
+  CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+
 code_quality_job :
     stage: quality
     allow_failure: true
@@ -19,13 +22,10 @@ test_job:
 
 build_job:
   stage: build
-  image: docker:24.0.4
+  image: docker:dind
   services:
-    - docker:24.0.4-dind
+      - docker:dind
   script:
-    - docker build -t project-13-sml .
-    - echo ${HUB_DOCKER_TOKEN} |
-      docker login -u ${HUB_DOCKER_USERNAME} --password-stdin
-    - docker tag project-13-sml:latest medlao/project-13-sml:latest
-    - docker push medlao/project-13-sml:latest
-    - docker logout
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --pull --no-cache --rm=true . --tag=$CONTAINER_IMAGE
+    - docker push $CONTAINER_IMAGE
