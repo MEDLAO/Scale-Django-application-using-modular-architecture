@@ -25,7 +25,7 @@ build_job:
   script:
     - docker build -t project-13-sml .
     - echo ${HUB_DOCKER_TOKEN} |
-      docker login -u ${HUB_DOCKER_USERNAME}
+      docker login -u ${HUB_DOCKER_USERNAME} --password-stdin
     - docker tag project-13-sml:latest medlao/project-13-sml:latest
     - docker push medlao/project-13-sml:latest
     - docker logout
