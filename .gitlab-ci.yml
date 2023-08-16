@@ -25,9 +25,8 @@ build_job:
   image: docker:dind
   services:
       - docker:dind
-  before_script:
-    - export $CI_PROJECT_NAMESPACE=$(echo "$CI_PROJECT_NAMESPACE" | tr '[:upper:]' '[:lower:]')
   script:
+    - echo CI_PROJECT_NAMESPACE="$CI_PROJECT_NAMESPACE" | tr '[:upper:]' '[:lower:]'
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build --pull --no-cache --rm=true . --tag=$CONTAINER_IMAGE
     - docker push $CONTAINER_IMAGE
