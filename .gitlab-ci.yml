@@ -9,7 +9,8 @@ code_quality_job :
     stage: quality
     allow_failure: true
     script:
-        - flake8 .
+        - python -m flake8
+
         
 test_job:
   stage: test
