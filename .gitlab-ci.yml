@@ -4,14 +4,13 @@ stages:
   - build
   - deploy
 
-
 code_quality_job :
     stage: quality
     allow_failure: true
     script:
-        - python -m flake8
+        - pip install flake8
+        - flake8 .
 
-        
 test_job:
   stage: test
   image: python:3.10
