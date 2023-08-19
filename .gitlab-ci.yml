@@ -37,5 +37,5 @@ deploy_job:
   script:
     - ssh -o StrictHostkeyChecking=no -i $SSH_KEY root@159.89.16.25 "
         docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY &&
-        docker ps -aq | docker stop $(docker ps -a -q) | docker rm $(docker ps -a -q) &&
+        docker ps -aq | xargs docker stop | xargs docker container prune &&
         docker run -d -p 8000:8000 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA "
