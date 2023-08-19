@@ -6,6 +6,7 @@ stages:
 
 code_quality_job :
     stage: quality
+    image: python:3.10
     allow_failure: true
     script:
         - pip install flake8
