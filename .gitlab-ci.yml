@@ -25,11 +25,11 @@ build_job:
   services:
       - docker:dind
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - docker login -u $DOCKER_HUB_REGISTRY_USER -p $DOCKER_HUB_REGISTRY_PASSWORD $DOCKER_HUB_REGISTRY
+    - docker pull $DOCKER_HUB_REGISTRY_IMAGE:latest || true
+    - docker build --cache-from $DOCKER_HUB_REGISTRY_IMAGE:latest --tag $DOCKER_HUB_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $DOCKER_HUB_REGISTRY_IMAGE:latest .
+    - docker push $DOCKER_HUB_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $DOCKER_HUB_REGISTRY_IMAGE:latest
 
 deploy_job:
   stage: deploy
@@ -37,6 +37,6 @@ deploy_job:
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostkeyChecking=no -i $SSH_KEY root@159.89.16.25 "
-        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY &&
+        docker login -u $DOCKER_HUB_REGISTRY_USER -p $DOCKER_HUB_REGISTRY_PASSWORD $DOCKER_HUB_REGISTRY &&
         docker ps -a -q | xargs docker stop | xargs docker rm &&
-        docker run -d -p 8000:8000 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA "
+        docker run -d -p 8000:8000 $DOCKER_HUB_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA "
