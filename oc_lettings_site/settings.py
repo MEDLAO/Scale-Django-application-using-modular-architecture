@@ -25,8 +25,10 @@ if os.getenv('DEBUG') == 'True':
 else:
     DEBUG = False
 
-
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+if os.getenv('ALLOWED_HOSTS') is None:
+    ALLOWED_HOSTS = '127.0.0.1,0.0.0.0,localhost'.split(',')
+else:
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
