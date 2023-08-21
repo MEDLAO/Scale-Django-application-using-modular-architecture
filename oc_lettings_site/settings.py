@@ -144,61 +144,15 @@ sentry_sdk.init(
 )
 
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": True,
-    "root": {
-        "level": "DEBUG",
-        "handlers": ["console"],
-    },
-    "formatters": {
-        "standard": {
-            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            "datefmt": "%d/%b/%Y %H:%M:%S",
+    'version': 1,
+    'handlers': {
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'sentry_sdk.integrations.logging.EventHandler',
         },
     },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "standard",
-        },
-    },
-    "loggers": {
-        "": {
-            "level": "DEBUG",
-            "handlers": ["console"],
-            'propagate': False,
-        },
-        'django': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-            'propagate': False,
-        },
-        "django.db.backends": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": False,
-        },
-        # 'proj_djsentry': { # <= base Project
-        #     'level': 'WARNING',
-        #     'handlers': ['console', 'sentry'],
-        #     # required to avoid double logging with root logger
-        #     'propagate': False,
-        # },
-        'raven': {
-            'level': 'WARNING',
-            'handlers': ['console', ],
-            'propagate': False,
-        },
-        'sentry.errors': {
-            'level': 'WARNING',
-            'handlers': ['console'],
-            'propagate': False,
-        },
-        # 'app_base': {  # <= module name
-        #     'level': 'WARNING',
-        #     'handlers': ['sentry'],
-        #     'propagate': False,
-        # },
+    'root': {
+        'handlers': ['sentry'],
+        'level': 'ERROR',
     },
 }
