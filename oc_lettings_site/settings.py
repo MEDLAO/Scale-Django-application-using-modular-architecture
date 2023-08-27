@@ -152,17 +152,3 @@ sentry_sdk.init(
   # django.contrib.auth) you may enable sending PII data.
   send_default_pii=True
 )
-
-LOGGING = {
-    'version': 1,
-    'handlers': {
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'sentry_sdk.integrations.logging.EventHandler',
-        },
-    },
-    'root': {
-        'handlers': ['sentry'],
-        'level': 'ERROR',
-    },
-}

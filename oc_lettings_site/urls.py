@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 # def trigger_error(request):
 #     division_by_zero = 1 / 0
-#     logger.error("ZeroDivisionErrorabc", exc_info=True)
+#     logger.error("ZeroDivisionError", exc_info=True)
 
 
 urlpatterns = [

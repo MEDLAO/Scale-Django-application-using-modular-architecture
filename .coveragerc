@@ -1,2 +1,2 @@
-[report]
-omit = */tests/*
+[coverage:run]
+omit = */tests/*, settings.py, */migrations/*, */__init__.py, */admin.py, oc_lettings_site/apps.py

@@ -1,5 +1,7 @@
 """Function-based views for profiles app"""
 import logging
+
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from profiles.models import Profile
 
@@ -36,5 +38,5 @@ def profile(request, username):
         profile = Profile.objects.get(user__username=username)
         context = {'profile': profile}
         return render(request, 'profile.html', context)
-    except ValueError:
+    except ObjectDoesNotExist:
         logging.error("This profile doesn't exist.")
