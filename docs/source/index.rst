@@ -35,7 +35,7 @@ Les domaines du site et du déploiement à améliorer et/ou à ajouter :
 Les instructions sur l’installation du projet
 =============================================
 
- `Cf. README.me <https://github.com/MEDLAO/Building-secure-backend-architecture-Django-ORM>`_
+ `Cf. README.me <https://github.com/MEDLAO/Scale-Django-application-using-modular-architecture.git>`_
 
 Un guide de démarrage rapide
 ============================
