@@ -151,4 +151,4 @@ Déploiement et gestion de l'application
 
 Le déploiement de cette application web a été réalisé avec l'outil **DigitalOcean** via un **pipeline CI/CD** mis en place avec l'outil **GitLab**.
 
-La version déployée du site : `Orange County Lettings <http://159.89.16.25/>`_
+La version déployée du site : `Holiday Homes <http://159.89.16.25/>`_
