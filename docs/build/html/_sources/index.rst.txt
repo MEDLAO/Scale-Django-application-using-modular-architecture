@@ -35,7 +35,7 @@ Les domaines du site et du déploiement à améliorer et/ou à ajouter :
 Les instructions sur l’installation du projet
 =============================================
 
- `Cf. README.me <https://github.com/MEDLAO/Building-secure-backend-architecture-Django-ORM>`_
+ `Cf. README.me <https://github.com/MEDLAO/Scale-Django-application-using-modular-architecture.git>`_
 
 Un guide de démarrage rapide
 ============================
@@ -150,3 +150,5 @@ Déploiement et gestion de l'application
 ========================================
 
 Le déploiement de cette application web a été réalisé avec l'outil **DigitalOcean** via un **pipeline CI/CD** mis en place avec l'outil **GitLab**.
+
+La version déployée du site : `Orange County Lettings <http://159.89.16.25/>`_
