@@ -1,45 +1,62 @@
-## Résumé
+## Summary
 
-Site web d'Orange County Lettings
+Orange County Lettings Website
 
-## Développement local
+[**Français**](README-fr.md)
+<p>
+  <img src="pictures/oclettings-doc.png" width="250" height="170" />
+  <img src="pictures/oclettings-website-home.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-lettings.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-letting.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-profiles.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-profile.png" width="250" height="170"/>
+  <img src="pictures/oclettings-sentry-logging.png" width="250" height="170"/>
+  <img src="pictures/oclettings-gitlab-cicd-pipeline.png" width="250" height="170"/>
+  <img src="pictures/oclettings-digital-ocean-deployment.png" width="250" height="170"/>
+</p>
 
-### Prérequis
 
-- Compte GitHub avec accès en lecture à ce repository
+## Local development
+
+### Prerequisites
+
+- GitHub account with read access to this repository
 - Git CLI
 - SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+- Python interpreter, version 3.6 or higher
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+In the rest of the documentation on local development, it is assumed that the `python` command
+in your OS shell runs the above Python interpreter (unless a virtual environment is activated).
 
 ### macOS / Linux
 
-#### Cloner le repository
+#### Clone the repository
 
 - `cd /path/to/put/project/in`
 - `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
 
-#### Créer l'environnement virtuel
+#### Create the virtual environment
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+- `apt-get install python3-venv` If the previous step encounters errors with a package not found
+  on Ubuntu
+- Activate the environment `source venv/bin/activate`
+- Confirm that the `python` command runs the Python interpreter in the virtual environment
+  `which python`
+- Confirm that the Python interpreter version is 3.6 or higher `python --version`
+- Confirm that the `pip` command runs the pip executable in the virtual environment, `which pip`
+- To deactivate the environment, `deactivate`
 
-#### Exécuter le site
+#### Run the site
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pip install --requirement requirements.txt`
 - `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+- Go to `http://localhost:8000` in a browser.
+- Confirm that the site is functioning and navigable (you should see multiple profiles and
+  listings).
 
 #### Linting
 
@@ -47,31 +64,31 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - `source venv/bin/activate`
 - `flake8`
 
-#### Tests unitaires
+#### Unit tests
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pytest`
 
-#### Base de données
+#### Database
 
 - `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(profiles_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
+- Open a shell session `sqlite3`
+- Connect to the database `.open oc-lettings-site.sqlite3`
+- Display the tables in the database `.tables`
+- Display the columns in the profiles table, `pragma table_info(profiles_profile);`
+- Run a query on the profiles table, `select user_id, favorite_city from
   profiles_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+- `.quit` to exit
 
-#### Panel d'administration
+#### Admin panel
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+- Go to `http://localhost:8000/admin`
+- Log in with the user `admin`, password `Abc1234!`
 
 ### Windows
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+Using PowerShell, as above except :
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+- To activate the virtual environment, `.\venv\Scripts\Activate.ps1` 
+- Replace `which <my-command>` with `(Get-Command <my-command>).Path`
