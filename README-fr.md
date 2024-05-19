@@ -2,6 +2,20 @@
 
 Site web d'Orange County Lettings
 
+[**English**](README.md)
+<p>
+  <img src="pictures/oclettings-doc.png" width="250" height="170" />
+  <img src="pictures/oclettings-website-home.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-lettings.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-letting.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-profiles.png" width="250" height="170"/>
+  <img src="pictures/oclettings-website-profile.png" width="250" height="170"/>
+  <img src="pictures/oclettings-sentry-logging.png" width="250" height="170"/>
+  <img src="pictures/oclettings-gitlab-cicd-pipeline.png" width="250" height="170"/>
+  <img src="pictures/oclettings-digital-ocean-deployment.png" width="250" height="170"/>
+</p>
+
+
 ## Développement local
 
 ### Prérequis
